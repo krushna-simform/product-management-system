@@ -1,0 +1,30 @@
+{
+  "name": "pms",
+  "version": "1.0.0",
+  "description": "This is a product management system application built using TypeScript. To build it, I used ParcelJS.",
+  "type": "module",
+  "scripts": {
+    "dev": "parcel serve ./src/index.html --port 3000",
+    "type-check": "tsc -b --noEmit",
+    "build": "npm run type-check && parcel build ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krushna-simform/product-management-system.git"
+  },
+  "keywords": [
+    "product",
+    "typeScript",
+    "parcel"
+  ],
+  "author": "krushna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krushna-simform/product-management-system/issues"
+  },
+  "homepage": "https://github.com/krushna-simform/product-management-system#readme",
+  "devDependencies": {
+    "parcel": "^2.14.2",
+    "typescript": "^5.8.2"
+  }
+}
