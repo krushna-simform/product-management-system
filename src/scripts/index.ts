@@ -1,1 +1,5 @@
-console.log('TypeScript!');
+import { ProductControler } from '../controller/productController';
+
+document.addEventListener('DOMContentLoaded', () => {
+    new ProductControler();
+});
