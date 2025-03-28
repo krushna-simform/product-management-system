@@ -26,4 +26,15 @@ export class ProductView {
     loading() {
         this.productContainer.innerHTML = `<p>Loading...</p>`;
     }
+
+    handleViewDetailsButton(product: Product[]) {
+        document
+            .querySelectorAll('.view-details-btn')
+            .forEach((btn, index: number) => {
+                btn.addEventListener('click', () => {
+                    const productId: number = product[index].id;
+                    window.location.href = `product.html?id=${productId}`;
+                });
+            });
+    }
 }
