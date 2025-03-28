@@ -138,6 +138,70 @@
             </div>
         </main>
 
+        <div id="product-form-container" class="hidden">
+            <form id="product-form" aria-label="Add prodct form">
+                <p aria-label="Add new product">Add New Product</p>
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Title"
+                    aria-label="Title"
+                    required
+                />
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Description"
+                    aria-label="Description"
+                    required
+                />
+                <input
+                    type="text"
+                    id="category"
+                    placeholder="Category"
+                    aria-label="Category"
+                    required
+                />
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Price"
+                    aria-label="Price"
+                    required
+                />
+                <input
+                    type="number"
+                    id="stock"
+                    placeholder="Stock"
+                    aria-label="Stock"
+                    required
+                />
+                <input
+                    type="url"
+                    id="imageUrl"
+                    placeholder="Image URL"
+                    aria-label="Image Url"
+                    required
+                />
+                <div class="form-buttons">
+                    <button
+                        type="submit"
+                        id="submit-btn"
+                        aria-label="Add product"
+                    >
+                        Add Product
+                    </button>
+                    <button
+                        type="button"
+                        id="close-form-btn"
+                        aria-label="Cancel"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
         <script src="scripts/index.ts"></script>
     </body>
 </html>
