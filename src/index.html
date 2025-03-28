@@ -39,7 +39,21 @@
         <link rel="stylesheet" href="styles/style.css" />
     </head>
     <body>
-        <h1>TypeScript!</h1>
+        <header>
+            <div class="search-box">
+                <p aria-label="Product Management">Product Management</p>
+                <input
+                    type="text"
+                    id="search-bar"
+                    placeholder="Search products..."
+                    aria-label="Search Products"
+                />
+            </div>
+            <button id="add-button" aria-label="Add product">
+                Add product
+            </button>
+        </header>
+
         <script src="scripts/index.ts"></script>
     </body>
 </html>
