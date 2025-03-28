@@ -25,10 +25,19 @@ export class ProductControler {
 
             this.allProducts = [...apiProducts];
             this.view.renderProducts(this.allProducts);
+            this.eventHandler();
         } catch (err) {
             console.error('Error fetching products:', err);
         } finally {
             this.isLoading = false;
+        }
+    }
+
+    private eventHandler(): void {
+        try {
+            this.view.handleViewDetailsButton(this.allProducts);
+        } catch (err) {
+            alert(`Error while getting product details ${err}`);
         }
     }
 }
