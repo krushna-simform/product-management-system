@@ -39,7 +39,162 @@
         <link rel="stylesheet" href="styles/style.css" />
     </head>
     <body>
-        <h1>TypeScript!</h1>
+        <header>
+            <div class="search-box">
+                <h1>Product Management</h1>
+                <input
+                    type="text"
+                    id="search-bar"
+                    placeholder="Search products..."
+                    aria-label="Search Products"
+                    tabindex="0"
+                />
+            </div>
+            <button id="add-button" aria-label="Add product">
+                Add product
+            </button>
+        </header>
+
+        <main>
+            <div class="product-card" tabindex="0">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Macbook Air"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="product-info">
+                    <p>Macbook Air</p>
+                    <div class="price-row">
+                        <span class="price">$1000</span>
+                        <span class="discount-badge">10% off</span>
+                    </div>
+                    <p class="category">Laptop</p>
+                    <div class="rating">
+                        ★
+                        <span>4.5</span>
+                    </div>
+                    <p class="stock">25 in stock</p>
+                </div>
+                <div class="card-buttons">
+                    <button
+                        class="delete-details-btn"
+                        aria-label="Delete product"
+                    >
+                        Delete
+                    </button>
+                    <button class="edit-details-btn" aria-label="Edit product">
+                        Edit
+                    </button>
+                    <button class="view-details-btn" aria-label="View Details">
+                        view details
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" tabindex="0">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1605784401368-5af1d9d6c4dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Macbook Pro"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="product-info">
+                    <p>Macbook Pro</p>
+                    <div class="price-row">
+                        <span class="price">$1200</span>
+                        <span class="discount-badge">10% off</span>
+                    </div>
+                    <p class="category">Laptop</p>
+                    <div class="rating">
+                        ★
+                        <span>4.5</span>
+                    </div>
+                    <p class="stock">25 in stock</p>
+                </div>
+                <div class="card-buttons">
+                    <button
+                        class="delete-details-btn"
+                        aria-label="Delete product"
+                    >
+                        Delete
+                    </button>
+                    <button class="edit-details-btn" aria-label="Edit product">
+                        Edit
+                    </button>
+                    <button class="view-details-btn" aria-label="View Details">
+                        view details
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div id="product-form-container" class="hidden">
+            <form id="product-form" aria-label="Add prodct form">
+                <p>Add New Product</p>
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Title"
+                    aria-label="Title"
+                    required
+                />
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Description"
+                    aria-label="Description"
+                    required
+                />
+                <input
+                    type="text"
+                    id="category"
+                    placeholder="Category"
+                    aria-label="Category"
+                    required
+                />
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Price"
+                    aria-label="Price"
+                    required
+                />
+                <input
+                    type="number"
+                    id="stock"
+                    placeholder="Stock"
+                    aria-label="Stock"
+                    required
+                />
+                <input
+                    type="url"
+                    id="imageUrl"
+                    placeholder="Image URL"
+                    aria-label="Image Url"
+                    required
+                />
+                <div class="form-buttons">
+                    <button
+                        type="submit"
+                        id="submit-btn"
+                        aria-label="Add product"
+                    >
+                        Add Product
+                    </button>
+                    <button
+                        type="button"
+                        id="close-form-btn"
+                        aria-label="Cancel"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
         <script src="scripts/index.ts"></script>
     </body>
 </html>
