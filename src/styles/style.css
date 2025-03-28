@@ -202,7 +202,7 @@ main {
     border: 1px solid #f0f0f0;
 }
 
-#product-form-container p {
+#product-form-container h1 {
     margin-bottom: 1.5rem;
     font-weight: 500;
     font-size: 1.25rem;
