@@ -12,7 +12,6 @@ export class ApiServices {
     async searchOneProduct(query: string): Promise<Product> {
         const response = await fetch(`${this.URL}/${query}`);
         const data: Product = await response.json();
-        console.log(data);
         return data;
     }
 }
