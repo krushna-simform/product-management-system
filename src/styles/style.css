@@ -72,7 +72,7 @@ header {
 
 /* product card */
 
-main {
+#product-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     gap: var(--gap);
@@ -184,7 +184,7 @@ main {
 
 /* form  */
 .hidden {
-    display: block;
+    display: none;
 }
 
 #product-form-container {
