@@ -1,5 +1,18 @@
-import { ProductControler } from '../controller/productController';
+import { ProductControler } from '../scripts/controller/productController';
+import { ProductDetails } from './view/productDetails';
 
 document.addEventListener('DOMContentLoaded', () => {
-    new ProductControler();
+    const isProductDetailPage =
+        window.location.pathname.includes('product.html');
+
+    if (isProductDetailPage) {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('id')) {
+            new ProductDetails();
+        } else {
+            window.location.href = '/';
+        }
+    } else {
+        new ProductControler();
+    }
 });
