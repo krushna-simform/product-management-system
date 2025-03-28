@@ -14,4 +14,10 @@ export class ApiServices {
         const data: Product = await response.json();
         return data;
     }
+
+    async searchProducts(query: string): Promise<Product[]> {
+        const response = await fetch(`${this.URL}/search?q=${query}`);
+        const data: ProductResponse = await response.json();
+        return data.products;
+    }
 }
