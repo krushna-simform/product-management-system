@@ -3,11 +3,11 @@ import { debounce } from '../utils/debounce';
 import { ProductView } from '../view/productView';
 import { ApiServices } from './apiServices';
 
-export class ProductControler {
+export class ProductController {
     private apiServices: ApiServices;
     private allProducts: Product[] = [];
     private isLoading: boolean = true;
-    private view!: ProductView;
+    private view: ProductView;
 
     private searchBar: HTMLInputElement;
 
@@ -19,10 +19,10 @@ export class ProductControler {
             'search-bar'
         ) as HTMLInputElement;
 
-        this.initalize();
+        this.initialize();
     }
 
-    private async initalize(): Promise<void> {
+    private async initialize(): Promise<void> {
         this.view.loading();
         await this.fetchData();
     }
