@@ -23,6 +23,8 @@ export class ProductDetails {
                 this.productId
             );
 
+            if (!this.productDetailContainer) return;
+
             this.productDetailContainer.innerHTML =
                 templates.productDetails(product);
         } catch (err) {

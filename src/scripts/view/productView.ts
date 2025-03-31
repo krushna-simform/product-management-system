@@ -14,16 +14,23 @@ export class ProductView {
         if (!products || products.length == 0) {
             this.showEmpty();
         }
+
+        if (!this.productContainer) return;
+
         this.productContainer.innerHTML = products
             .map(templates.productCard)
             .join('');
     }
 
     private showEmpty(): void {
+        if (!this.productContainer) return;
+
         this.productContainer.innerHTML = `<p>No products found</p>`;
     }
 
     loading() {
+        if (!this.productContainer) return;
+
         this.productContainer.innerHTML = `<p>Loading...</p>`;
     }
 
