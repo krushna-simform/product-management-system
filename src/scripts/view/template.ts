@@ -47,7 +47,7 @@ export const templates = {
                     <p class="product-title">${product.title}</p>
                     <p class="product-brand">by ${product.brand}</p>
                     <div class="product-price-des">
-                        <span class="product-detail-price">$${product.price}</span>
+                        <span class="product-detail-price">$${product.price.toFixed(2)}</span>
                         <span class="product-detail-discount-badge">${product.discountPercentage}% off</span>
                     </div>
                     <div class="rating">
