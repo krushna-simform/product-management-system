@@ -7,7 +7,7 @@ export interface Product {
     discountPercentage: number;
     rating: number;
     stock: number;
-    tags: string[];
+    tags: Array<string>;
     brand: string;
     sku: string;
     weight: number;
@@ -15,11 +15,11 @@ export interface Product {
     warrantyInformation: string;
     shippingInformation: string;
     availabilityStatus: string;
-    reviews: Review[];
+    reviews: Array<Review>;
     returnPolicy: string;
     minimumOrderQuantity: number;
     meta: Meta;
-    images: string[];
+    images: Array<string>;
     thumbnail: string;
 }
 
@@ -45,7 +45,7 @@ export interface Review {
 }
 
 export interface ProductResponse {
-    products: Product[];
+    products: Array<Product>;
     total: number;
     skip: number;
     limit: number;
