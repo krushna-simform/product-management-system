@@ -74,31 +74,7 @@ export const templates = {
                     <li><strong>Returns: </strong>Returns ${product.returnPolicy}</li>
                 </ul>
             </div>
-            ${
-                product.reviews.length > 0
-                    ? `
-            <div class="reviews-section">
-                <p>Customer Reviews</p>
-                <div class="reviews">
-                    ${product.reviews
-                        .map(
-                            (review: Review) => `
-                    <div class="review">
-                        <div class="review-header">
-                        <div class="reviewer">${review.reviewerName}</div>
-                        <div class="review-rating">${'★'.repeat(review.rating)}</div>
-                        <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
-                        </div>
-                        <p class="review-comment">${review.comment}</p>
-                    </div>
-                    `
-                        )
-                        .join('')}
-                </div>
-            </div>
-            `
-                    : ''
-            }
+            ${templates.productReview(product)}
         </div>
         </div>
   `,
@@ -109,4 +85,32 @@ export const templates = {
             <p class="bad-request-message-2">404 product with id ${productId} is not found!</p>
         </div>
   `,
+
+    productReview: (product: Product) => `
+        ${
+            product.reviews.length > 0
+                ? `
+            <div class="reviews-section">
+                <p>Customer Reviews</p>
+                <div class="reviews">
+                    ${product.reviews
+                        .map(
+                            (review: Review) => `
+                    <div class="review">
+                        <div class="review-header">
+                            <div class="reviewer">${review.reviewerName}</div>
+                            <div class="review-rating">${'★'.repeat(review.rating)}</div>
+                            <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
+                        </div>
+                        <p class="review-comment">${review.comment}</p>
+                    </div>
+                    `
+                        )
+                        .join('')}
+                </div>
+            </div>
+            `
+                : ''
+        }
+    `,
 };

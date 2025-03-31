@@ -10,7 +10,7 @@ export class ProductDetails {
     constructor() {
         this.apiServices = new ApiServices();
         this.urlParams = new URLSearchParams(window.location.search);
-        this.productId = this.urlParams.get('id')!;
+        this.productId = this.urlParams.get('id') || '';
         this.productDetailContainer = document.getElementById(
             'product-details'
         ) as HTMLElement;
