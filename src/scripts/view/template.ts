@@ -28,8 +28,8 @@ export const templates = {
                 <button class="delete-details-btn" aria-label="Delete product" id="${product.id}">
                     Delete
                 </button>
-                <button class="edit-details-btn" aria-label="Edit product id="${product.id}">Edit</button>
-                <button class="view-details-btn" aria-label="View Details id="${product.id}">
+                <button class="edit-details-btn" aria-label="Edit product" id="${product.id}">Edit</button>
+                <button class="view-details-btn" aria-label="View Details" id="${product.id}">
                     View Details
                 </button>
             </div>
