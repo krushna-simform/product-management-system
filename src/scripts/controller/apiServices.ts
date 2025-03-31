@@ -1,4 +1,4 @@
-import { Product, ProductResponse } from '../model/interfaces';
+import type { Product, ProductResponse } from '../model/interfaces';
 
 export class ApiServices {
     private URL: string = 'https://dummyjson.com/products';

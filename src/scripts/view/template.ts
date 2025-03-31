@@ -1,4 +1,4 @@
-import { Product, Review } from '../model/interfaces';
+import type { Product, Review } from '../model/interfaces';
 
 export const templates = {
     productCard: (product: Product) => {

@@ -1,4 +1,4 @@
-import { Product } from '../model/interfaces';
+import type { Product } from '../model/interfaces';
 import { templates } from './template';
 
 export class ProductView {

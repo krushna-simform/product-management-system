@@ -1,4 +1,4 @@
-import { Product } from '../model/interfaces';
+import type { Product } from '../model/interfaces';
 import { debounce } from '../utils/debounce';
 import { ProductView } from '../view/productView';
 import { ApiServices } from './apiServices';
