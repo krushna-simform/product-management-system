@@ -30,7 +30,7 @@ export const templates = {
                 </button>
                 <button class="edit-details-btn" aria-label="Edit product id="${product.id}">Edit</button>
                 <button class="view-details-btn" aria-label="View Details id="${product.id}">
-                    view details
+                    View Details
                 </button>
             </div>
         </div>

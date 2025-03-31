@@ -44,5 +44,14 @@ export class ProductView {
                     window.location.href = `product.html?id=${productId}`;
                 });
             });
+
+        document
+            .querySelectorAll('.product-image')
+            .forEach((btn, index: number) => {
+                btn.addEventListener('click', () => {
+                    const productId: number = product[index].id;
+                    window.location.href = `product.html?id=${productId}`;
+                });
+            });
     }
 }
