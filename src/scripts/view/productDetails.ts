@@ -26,7 +26,7 @@ export class ProductDetails {
             this.productDetailContainer.innerHTML =
                 templates.productDetails(product);
         } catch (err) {
-            console.log('Error fetching product details:', err);
+            alert(`Get error while fetching product details ${err}`);
         }
     }
 }
