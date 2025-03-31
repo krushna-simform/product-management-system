@@ -33,7 +33,7 @@ export class ProductController {
 
             this.allProducts = [...apiProducts];
             this.view.renderProducts(this.allProducts);
-            this.eventHandler();
+            this.attachEventHandlers();
         } catch (err) {
             alert(`Get Error while loading product data ${err}`);
         } finally {
@@ -51,7 +51,7 @@ export class ProductController {
         }
     }
 
-    initSearchProduct(): void {
+    attachSearchHandler(): void {
         const debounceSearch = debounce((query: string) => {
             this.searchData(query);
         }, 500);
@@ -64,10 +64,10 @@ export class ProductController {
         });
     }
 
-    private eventHandler(): void {
+    private attachEventHandlers(): void {
         try {
             this.view.handleViewDetailsButton(this.allProducts);
-            this.initSearchProduct();
+            this.attachSearchHandler();
         } catch (err) {
             alert(`Error while getting product details ${err}`);
         }
