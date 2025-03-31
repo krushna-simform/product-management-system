@@ -1,7 +1,7 @@
 import type { Product, ProductResponse } from '../model/interfaces';
 
 export class ApiServices {
-    private URL: string = 'https://dummyjson.com/products';
+    private readonly URL: string = 'https://dummyjson.com/products';
 
     async fetchProducts(): Promise<Array<Product>> {
         const response = await fetch(`${this.URL}`);
