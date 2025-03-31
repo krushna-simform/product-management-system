@@ -380,3 +380,29 @@ header {
 #no-product-found {
     color: var(--product-detail-discount-badge-color);
 }
+
+@media (max-width: 910px) {
+    .search-box {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+    }
+
+    #product-details {
+        width: 100%;
+    }
+
+    .detail-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 554px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 1 rem;
+    }
+}
