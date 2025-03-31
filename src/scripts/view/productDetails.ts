@@ -19,7 +19,7 @@ export class ProductDetails {
 
     async searchProductByID() {
         try {
-            const product = await this.apiServices.searchOneProduct(
+            const product = await this.apiServices.fetchProductById(
                 this.productId
             );
 

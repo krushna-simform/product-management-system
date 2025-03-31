@@ -1,4 +1,4 @@
-import { ProductControler } from '../scripts/controller/productController';
+import { ProductController } from './controller/productController';
 import { ProductDetails } from './view/productDetails';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = '/';
         }
     } else {
-        new ProductControler();
+        new ProductController();
     }
 });
