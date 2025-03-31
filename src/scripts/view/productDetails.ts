@@ -29,6 +29,7 @@ export class ProductDetails {
                 templates.productDetails(product);
         } catch (err) {
             alert(`Get error while fetching product details ${err}`);
+            console.error(`Get error while fetching product details ${err}`);
 
             this.productDetailContainer.innerHTML = templates.badRequest(
                 this.productId

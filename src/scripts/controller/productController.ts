@@ -36,6 +36,7 @@ export class ProductController {
             this.attachEventHandlers();
         } catch (err) {
             alert(`Get Error while loading product data ${err}`);
+            console.error(`Get Error while loading product data ${err}`);
         } finally {
             this.isLoading = false;
         }
@@ -48,6 +49,7 @@ export class ProductController {
             this.view.renderProducts(this.allProducts);
         } catch (err) {
             alert(`Ger Erroe while searching product data ${err}`);
+            console.error(`Ger Erroe while searching product data ${err}`);
         }
     }
 
@@ -70,6 +72,7 @@ export class ProductController {
             this.attachSearchHandler();
         } catch (err) {
             alert(`Error while getting product details ${err}`);
+            console.error(`Error while getting product details ${err}`);
         }
     }
 }
