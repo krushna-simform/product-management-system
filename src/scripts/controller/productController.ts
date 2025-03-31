@@ -5,7 +5,7 @@ import { ApiServices } from './apiServices';
 
 export class ProductController {
     private apiServices: ApiServices;
-    private allProducts: Product[] = [];
+    private allProducts: Array<Product> = [];
     private isLoading: boolean = true;
     private view: ProductView;
 

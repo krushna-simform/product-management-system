@@ -10,7 +10,7 @@ export class ProductView {
         ) as HTMLElement;
     }
 
-    renderProducts(products: Product[]): void {
+    renderProducts(products: Array<Product>): void {
         if (!products || products.length == 0) {
             this.showEmpty();
             return;
@@ -35,7 +35,7 @@ export class ProductView {
         this.productContainer.innerHTML = `<p>Loading...</p>`;
     }
 
-    handleViewDetailsButton(product: Product[]) {
+    handleViewDetailsButton(product: Array<Product>) {
         document
             .querySelectorAll('.view-details-btn')
             .forEach((btn, index: number) => {

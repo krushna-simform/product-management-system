@@ -1,5 +1,5 @@
 {
-  "name": "pms",
+  "name": "product management system",
   "version": "1.0.0",
   "description": "This is a product management system application built using TypeScript. To build it, I used ParcelJS.",
   "type": "module",
