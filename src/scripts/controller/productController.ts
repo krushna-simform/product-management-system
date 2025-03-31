@@ -62,6 +62,7 @@ export class ProductController {
 
         this.searchBar.addEventListener('input', (e) => {
             const query = (e.target as HTMLInputElement).value;
+            if (query.trim() == '') return;
             debounceSearch(query);
         });
     }
