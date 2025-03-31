@@ -381,6 +381,17 @@ header {
     color: var(--product-detail-discount-badge-color);
 }
 
+.bad-request-message-1 {
+    font-size: 2rem;
+    color: var(--card-category-font-color);
+}
+
+.bad-request-message-2 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--product-detail-discount-badge-color);
+}
+
 @media (max-width: 910px) {
     .search-box {
         display: flex;

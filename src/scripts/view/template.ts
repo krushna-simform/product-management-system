@@ -102,4 +102,11 @@ export const templates = {
         </div>
         </div>
   `,
+
+    badRequest: (productId: string) => `
+        <div class="bad-request-container">
+            <p class="bad-request-message-1">Bad Request :(</p>
+            <p class="bad-request-message-2">404 product with id ${productId} is not found!</p>
+        </div>
+  `,
 };
