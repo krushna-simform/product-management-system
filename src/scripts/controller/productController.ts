@@ -48,8 +48,8 @@ export class ProductController {
             this.allProducts = [...apiProducts];
             this.view.renderProducts(this.allProducts);
         } catch (err) {
-            alert(`Ger Erroe while searching product data ${err}`);
-            console.error(`Ger Erroe while searching product data ${err}`);
+            alert(`Get Error while searching product data ${err}`);
+            console.error(`Get Error while searching product data ${err}`);
         }
     }
 
