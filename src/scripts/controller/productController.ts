@@ -35,7 +35,7 @@ export class ProductController {
             this.view.renderProducts(this.allProducts);
             this.eventHandler();
         } catch (err) {
-            console.error('Error fetching products:', err);
+            alert(`Get Error while loading product data ${err}`);
         } finally {
             this.isLoading = false;
         }
@@ -47,7 +47,7 @@ export class ProductController {
             this.allProducts = [...apiProducts];
             this.view.renderProducts(this.allProducts);
         } catch (err) {
-            console.error('Search error:', err);
+            alert(`Ger Erroe while searching product data ${err}`);
         }
     }
 
