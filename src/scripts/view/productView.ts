@@ -13,6 +13,7 @@ export class ProductView {
     renderProducts(products: Product[]): void {
         if (!products || products.length == 0) {
             this.showEmpty();
+            return;
         }
 
         if (!this.productContainer) return;
@@ -25,7 +26,7 @@ export class ProductView {
     private showEmpty(): void {
         if (!this.productContainer) return;
 
-        this.productContainer.innerHTML = `<p>No products found</p>`;
+        this.productContainer.innerHTML = `<p id="no-product-found">No products found</p>`;
     }
 
     loading() {

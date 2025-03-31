@@ -376,3 +376,7 @@ header {
     color: var(--product-detail-review-comment-color);
     margin: 0;
 }
+
+#no-product-found {
+    color: var(--product-detail-discount-badge-color);
+}
