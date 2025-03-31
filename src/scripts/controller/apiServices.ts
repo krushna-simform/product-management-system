@@ -9,7 +9,7 @@ export class ApiServices {
         return data.products;
     }
 
-    async fetchProductById(query: string): Promise<Product> {
+    async fetchProductById(query: number): Promise<Product> {
         const response = await fetch(`${this.URL}/${query}`);
         const data: Product = await response.json();
         return data;

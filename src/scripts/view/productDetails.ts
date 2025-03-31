@@ -20,7 +20,7 @@ export class ProductDetails {
     async searchProductByID() {
         try {
             const product = await this.apiServices.fetchProductById(
-                this.productId
+                Number(this.productId)
             );
 
             if (!this.productDetailContainer) return;
