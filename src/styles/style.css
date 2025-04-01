@@ -287,6 +287,7 @@ header {
     border-radius: 8px;
     background: white;
     min-height: 80vh;
+    position: relative;
 }
 
 .detail-header {
@@ -409,6 +410,21 @@ header {
     position: absolute;
     bottom: 50%;
     right: 50%;
+}
+
+#back-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #bebebe;
+    color: var(--font-color);
 }
 
 @keyframes l2 {

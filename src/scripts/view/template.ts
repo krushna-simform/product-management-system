@@ -75,6 +75,7 @@ export const templates = {
                 </ul>
             </div>
             ${templates.productReview(product)}
+            <a href="index.html" id="back-button" role="button">Back</a>
         </div>
         </div>
   `,
