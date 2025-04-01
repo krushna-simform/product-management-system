@@ -1,4 +1,6 @@
 import { ApiServices } from '../controller/apiServices';
+import type { Product } from '../model/interfaces';
+import { StorageService } from '../utils/localStorageService';
 import { templates } from './template';
 
 export class ProductDetails {
@@ -33,9 +35,19 @@ export class ProductDetails {
 
     async searchProductByID() {
         try {
-            const product = await this.apiServices.fetchProductById(
-                Number(this.productId)
+            const localProducts: Array<Product> = StorageService.getProducts();
+
+            if (!localProducts) return;
+
+            let product = localProducts.find(
+                (p) => p.id.toString() === this.productId
             );
+
+            if (!product) {
+                product = await this.apiServices.fetchProductById(
+                    Number(this.productId)
+                );
+            }
 
             if (!this.productDetailContainer) return;
 
