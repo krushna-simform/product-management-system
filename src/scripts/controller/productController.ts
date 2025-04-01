@@ -124,6 +124,48 @@ export class ProductController {
         }
     };
 
+    loadProductDetailsIntoForm(product: Product) {
+        if (!product) return;
+
+        const setValue = (selector: string, value: string | number) => {
+            (
+                this.addProductForm.querySelector(selector) as HTMLInputElement
+            ).value = String(value);
+        };
+
+        const submitBtn = this.addProductForm.querySelector(
+            '#submit-btn'
+        ) as HTMLButtonElement;
+
+        if (!submitBtn) {
+            return;
+        } else if (submitBtn) {
+            submitBtn.textContent = 'Update';
+        }
+
+        setValue('#title', product.title);
+        setValue('#description', product.description);
+        setValue('#category', product.category);
+        setValue('#price', product.price);
+        setValue('#stock', product.stock);
+        setValue('#imageUrl', product.thumbnail);
+    }
+
+    attachEditButtonHandler(products: Product[]) {
+        if (!products) return;
+
+        const editButtons = document.querySelectorAll('.edit-details-btn');
+        if (!editButtons) return;
+
+        editButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                this.editProductId = products[index].id;
+                this.loadProductDetailsIntoForm(products[index]);
+                this.addFormContainer.classList.remove('hidden');
+            });
+        });
+    }
+
     async addProduct(isUpdate: boolean = false) {
         const getValue = (selector: string) =>
             (
@@ -191,6 +233,7 @@ export class ProductController {
             this.view.handleViewDetailsButton(this.allProducts);
             this.attachSearchHandler();
             this.attachFormHandler();
+            this.attachEditButtonHandler(this.allProducts);
         } catch (err) {
             alert(`Error while getting product details ${err}`);
             console.error(`Error while getting product details ${err}`);
