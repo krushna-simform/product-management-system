@@ -214,10 +214,15 @@ export class ProductController {
         const stock = Number(getValue('#stock'));
         const imageUrl = getValue('#imageUrl');
 
+        const isValidTitle = /^[A-Za-z\s]+[A-Za-z0-9\s]*$/.test(title);
+        const isValidCategory = /^[A-Za-z\s]+[A-Za-z0-9\s]*$/.test(category);
+
         if (
             !title ||
+            !isValidTitle ||
             !description ||
             !category ||
+            !isValidCategory ||
             isNaN(price) ||
             price <= 0 ||
             isNaN(stock) ||
