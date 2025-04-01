@@ -21,6 +21,7 @@ export interface Product {
     meta: Meta;
     images: Array<string>;
     thumbnail: string;
+    userAdded?: boolean;
 }
 
 interface Dimensions {

@@ -25,10 +25,16 @@ export const templates = {
                 <p class="stock">${product.stock} in stock</p>
             </div>
             <div class="card-buttons">
-                <button class="delete-details-btn" aria-label="Delete product" id="${product.id}">
-                    Delete
-                </button>
-                <button class="edit-details-btn" aria-label="Edit product" id="${product.id}">Edit</button>
+                ${
+                    product.userAdded
+                        ? `
+                    <button class="delete-details-btn" aria-label="Delete product" id="${product.id}">
+                        Delete
+                    </button>
+                    <button class="edit-details-btn" aria-label="Edit product" id="${product.id}">Edit</button>
+                    `
+                        : ``
+                }
                 <button class="view-details-btn" aria-label="View Details" id="${product.id}">
                     View Details
                 </button>
