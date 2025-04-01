@@ -183,6 +183,23 @@ export class ProductController {
         });
     }
 
+    attachDeleteButtonHandler(): void {
+        const deleteButtons = document.querySelectorAll('.delete-details-btn');
+
+        if (!deleteButtons) return;
+
+        deleteButtons.forEach((btn) => {
+            btn.addEventListener('click', async (e: Event) => {
+                const productId = parseInt((e.target as HTMLButtonElement).id);
+                if (confirm('Are you sure you want to delete this product?')) {
+                    StorageService.deleteProduct(productId);
+                    this.initialize();
+                    alert('Product deleted successfully!');
+                }
+            });
+        });
+    }
+
     async addProduct(isUpdate: boolean = false) {
         const getValue = (selector: string) =>
             (
@@ -251,6 +268,7 @@ export class ProductController {
             this.attachSearchHandler();
             this.attachFormHandler();
             this.attachEditButtonHandler(this.allProducts);
+            this.attachDeleteButtonHandler();
         } catch (err) {
             alert(`Error while getting product details ${err}`);
             console.error(`Error while getting product details ${err}`);
