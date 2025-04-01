@@ -168,7 +168,7 @@ export class ProductController {
         setValue('#imageUrl', product.thumbnail);
     }
 
-    attachEditButtonHandler(products: Product[]) {
+    attachEditButtonHandler(products: Array<Product>) {
         if (!products) return;
 
         const editButtons = document.querySelectorAll('.edit-details-btn');

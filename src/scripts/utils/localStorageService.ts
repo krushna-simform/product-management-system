@@ -3,12 +3,12 @@ import { Product } from '../model/interfaces';
 export class StorageService {
     private static readonly PRODUCTS_KEY = 'customProducts';
 
-    static getProducts(): Product[] {
+    static getProducts(): Array<Product> {
         const products = localStorage.getItem(this.PRODUCTS_KEY);
         return products ? JSON.parse(products) : [];
     }
 
-    static saveProducts(products: Product[]): void {
+    static saveProducts(products: Array<Product>): void {
         if (!products) return;
         localStorage.setItem(this.PRODUCTS_KEY, JSON.stringify(products));
     }
