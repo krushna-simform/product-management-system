@@ -24,6 +24,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--bg-color);
     color: var(--font-color);
+    height: 100vh;
 }
 
 /* header */
@@ -285,6 +286,7 @@ header {
     padding: 1.5rem;
     border-radius: 8px;
     background: white;
+    min-height: 80vh;
 }
 
 .detail-header {
@@ -395,6 +397,24 @@ header {
     margin-top: 1rem;
     font-size: 1.2rem;
     color: var(--product-detail-discount-badge-color);
+}
+
+#loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid lightblue;
+    border-right-color: orange;
+    animation: l2 1s infinite linear;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+}
+
+@keyframes l2 {
+    to {
+        transform: rotate(1turn);
+    }
 }
 
 @media (max-width: 910px) {

@@ -24,8 +24,14 @@ export class ProductDetails {
             );
             return;
         }
-
+        this.loading();
         this.searchProductByID();
+    }
+
+    loading() {
+        if (!this.productDetailContainer) return;
+
+        this.productDetailContainer.innerHTML = `<p id="loader"></p>`;
     }
 
     private isValidProductId(productId: string): boolean {
