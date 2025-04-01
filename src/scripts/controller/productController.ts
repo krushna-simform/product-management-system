@@ -78,6 +78,7 @@ export class ProductController {
             const apiProducts = await this.apiServices.searchProducts(query);
             this.allProducts = [...localFiltered, ...apiProducts];
             this.view.renderProducts(this.allProducts);
+            this.view.handleViewDetailsButton(this.allProducts);
         } catch (err) {
             alert(`Get Error while searching product data ${err}`);
             console.error(`Get Error while searching product data ${err}`);
