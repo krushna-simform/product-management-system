@@ -195,7 +195,6 @@ export class ProductController {
                 if (confirm('Are you sure you want to delete this product?')) {
                     StorageService.deleteProduct(productId);
                     this.initialize();
-                    alert('Product deleted successfully!');
                 }
             });
         });
