@@ -67,9 +67,16 @@ export class ProductController {
     }
 
     async searchData(query: string): Promise<void> {
+        const localFiltered = StorageService.getProducts().filter(
+            (product) =>
+                product.title.toLowerCase().includes(query.toLowerCase()) ||
+                product.category.toLowerCase().includes(query.toLowerCase()) ||
+                product.brand.toLowerCase().includes(query.toLowerCase())
+        );
+
         try {
             const apiProducts = await this.apiServices.searchProducts(query);
-            this.allProducts = [...apiProducts];
+            this.allProducts = [...localFiltered, ...apiProducts];
             this.view.renderProducts(this.allProducts);
         } catch (err) {
             alert(`Get Error while searching product data ${err}`);
@@ -78,15 +85,25 @@ export class ProductController {
     }
 
     attachSearchHandler(): void {
+        let lastQuery = '';
+
         const debounceSearch = debounce((query: string) => {
-            this.searchData(query);
+            const trimmedQuery = query.trim();
+
+            if (trimmedQuery === '') {
+                if (lastQuery !== '') {
+                    this.fetchData();
+                }
+            } else if (trimmedQuery !== lastQuery) {
+                this.searchData(trimmedQuery);
+            }
+            lastQuery = trimmedQuery;
         }, 500);
 
         if (!this.searchBar) return;
 
         this.searchBar.addEventListener('input', (e) => {
             const query = (e.target as HTMLInputElement).value;
-            if (query.trim() == '') return;
             debounceSearch(query);
         });
     }
