@@ -1,13 +1,13 @@
 {
-  "name": "pms",
+  "name": "product management system",
   "version": "1.0.0",
   "description": "This is a product management system application built using TypeScript. To build it, I used ParcelJS.",
   "type": "module",
   "scripts": {
-    "dev": "parcel serve ./src/index.html --port 3000",
+    "dev": "parcel serve ./src/index.html ./src/product.html --port 3000",
     "type-check": "tsc -b --noEmit",
     "lint": "eslint src --ext .ts --cache --fix",
-    "build": "npm run type-check && npm run lint && parcel build ./src/index.html --no-autoinstall --no-optimize",
+    "build": "npm run type-check && npm run lint && parcel build ./src/index.html ./src/product.html --no-autoinstall --no-optimize",
     "format": "prettier src --write",
     "clean": "rm -rf dist .parcel-cache"
   },
