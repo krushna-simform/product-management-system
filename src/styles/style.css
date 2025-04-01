@@ -187,6 +187,11 @@ header {
     display: none;
 }
 
+.blur {
+    filter: blur(0.5rem);
+    transition-duration: 300ms;
+}
+
 #product-form-container {
     position: fixed;
     top: 50%;

@@ -16,6 +16,7 @@ export class ProductController {
     private addFormContainer: HTMLElement;
     private closeFormButton: HTMLButtonElement;
     private addProductForm: HTMLFormElement;
+    private productContainer: HTMLElement;
     private editProductId: number | null = null;
 
     constructor() {
@@ -41,6 +42,10 @@ export class ProductController {
         this.addProductForm = document.getElementById(
             'product-form'
         ) as HTMLFormElement;
+
+        this.productContainer = document.getElementById(
+            'product-container'
+        ) as HTMLElement;
 
         this.initialize();
     }
@@ -123,10 +128,12 @@ export class ProductController {
             this.editProductId = null;
             this.addProductForm.reset();
             this.addFormContainer.classList.remove('hidden');
+            this.productContainer.classList.add('blur');
         });
 
         this.closeFormButton.addEventListener('click', () => {
             this.addFormContainer.classList.add('hidden');
+            this.productContainer.classList.remove('blur');
         });
 
         this.addProductForm.removeEventListener('submit', this.onFormSubmit);
@@ -180,6 +187,7 @@ export class ProductController {
                 this.editProductId = products[index].id;
                 this.loadProductDetailsIntoForm(products[index]);
                 this.addFormContainer.classList.remove('hidden');
+                this.productContainer.classList.add('blur');
             });
         });
     }
@@ -255,6 +263,7 @@ export class ProductController {
 
         this.addProductForm.reset();
         this.addFormContainer.classList.add('hidden');
+        this.productContainer.classList.remove('blur');
         this.initialize();
     }
 
