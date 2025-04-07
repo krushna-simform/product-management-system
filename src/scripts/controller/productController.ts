@@ -1,6 +1,7 @@
 import type { Product } from '../model/interfaces';
 import { addUpdateForm } from '../utils/addUpdateForm';
 import { debounce } from '../utils/debounce';
+import { FormValidation } from '../utils/formValidation';
 import { StorageService } from '../utils/localStorageService';
 import { ProductView } from '../view/productView';
 import { ApiServices } from './apiServices';
@@ -10,6 +11,7 @@ export class ProductController {
     private allProducts: Array<Product> = [];
     private isLoading: boolean = true;
     private view: ProductView;
+    private formValidation: FormValidation;
 
     private searchBar: HTMLInputElement;
     private addProductButton: HTMLButtonElement;
@@ -22,6 +24,7 @@ export class ProductController {
     constructor() {
         this.apiServices = new ApiServices();
         this.view = new ProductView();
+        this.formValidation = new FormValidation();
 
         this.searchBar = document.getElementById(
             'search-bar'
@@ -124,6 +127,81 @@ export class ProductController {
             return;
         }
 
+        (
+            this.addFormContainer.querySelector('#title') as HTMLInputElement
+        ).addEventListener('input', (e) => {
+            const title = (e.target as HTMLInputElement).value;
+            const errorMessage = this.formValidation.validateTitle(title);
+            if (errorMessage) {
+                this.formValidation.showError('title', errorMessage);
+            } else {
+                this.formValidation.clearError('title');
+            }
+        });
+
+        (
+            this.addProductForm.querySelector(
+                '#description'
+            ) as HTMLInputElement
+        ).addEventListener('input', (e) => {
+            const description = (e.target as HTMLInputElement).value;
+            const errorMessage =
+                this.formValidation.validateDescription(description);
+            if (errorMessage) {
+                this.formValidation.showError('description', errorMessage);
+            } else {
+                this.formValidation.clearError('description');
+            }
+        });
+
+        (
+            this.addProductForm.querySelector('#category') as HTMLInputElement
+        ).addEventListener('input', (e) => {
+            const category = (e.target as HTMLInputElement).value;
+            const errorMessage = this.formValidation.validateCategory(category);
+            if (errorMessage) {
+                this.formValidation.showError('category', errorMessage);
+            } else {
+                this.formValidation.clearError('category');
+            }
+        });
+
+        (
+            this.addProductForm.querySelector('#price') as HTMLImageElement
+        ).addEventListener('input', (e) => {
+            const price = Number((e.target as HTMLInputElement).value);
+            const errorMessage = this.formValidation.validatePrice(price);
+            if (errorMessage) {
+                this.formValidation.showError('price', errorMessage);
+            } else {
+                this.formValidation.clearError('price');
+            }
+        });
+
+        (
+            this.addProductForm.querySelector('#stock') as HTMLInputElement
+        ).addEventListener('input', (e) => {
+            const stock = Number((e.target as HTMLInputElement).value);
+            const errorMessage = this.formValidation.validateStock(stock);
+            if (errorMessage) {
+                this.formValidation.showError('stock', errorMessage);
+            } else {
+                this.formValidation.clearError('stock');
+            }
+        });
+
+        (
+            this.addProductForm.querySelector('#imageUrl') as HTMLInputElement
+        ).addEventListener('input', (e) => {
+            const imageUrl = (e.target as HTMLInputElement).value;
+            const errorMessage = this.formValidation.validateImageUrl(imageUrl);
+            if (errorMessage) {
+                this.formValidation.showError('imageUrl', errorMessage);
+            } else {
+                this.formValidation.clearError('imageUrl');
+            }
+        });
+
         this.addProductButton.addEventListener('click', () => {
             this.editProductId = null;
             this.addProductForm.reset();
@@ -221,22 +299,28 @@ export class ProductController {
         const stock = Number(getValue('#stock'));
         const imageUrl = getValue('#imageUrl');
 
-        const isValidTitle = /^[A-Za-z\s]+[A-Za-z0-9\s]*$/.test(title);
-        const isValidCategory = /^[A-Za-z\s]+[A-Za-z0-9\s]*$/.test(category);
+        const titleError = this.formValidation.validateTitle(title);
+        const descriptionError =
+            this.formValidation.validateDescription(description);
+        const categoryError = this.formValidation.validateCategory(category);
+        const priceError = this.formValidation.validatePrice(price);
+        const stockError = this.formValidation.validateStock(stock);
+        const imageUrlError = this.formValidation.validateImageUrl(imageUrl);
 
         if (
-            !title ||
-            !isValidTitle ||
-            !description ||
-            !category ||
-            !isValidCategory ||
-            isNaN(price) ||
-            price <= 0 ||
-            isNaN(stock) ||
-            stock <= 0 ||
-            !imageUrl
+            titleError ||
+            descriptionError ||
+            categoryError ||
+            priceError ||
+            stockError ||
+            imageUrlError
         ) {
-            alert('Please fill out all required fields with valid data.');
+            this.formValidation.showError('title', titleError);
+            this.formValidation.showError('description', descriptionError);
+            this.formValidation.showError('category', categoryError);
+            this.formValidation.showError('price', priceError);
+            this.formValidation.showError('stock', stockError);
+            this.formValidation.showError('imageUrl', imageUrlError);
             return;
         }
 
