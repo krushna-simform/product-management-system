@@ -209,11 +209,13 @@ export class ProductController {
             this.addProductForm.reset();
             this.addFormContainer.classList.remove('hidden');
             this.productContainer.classList.add('blur');
+            this.productContainer.style.pointerEvents = 'none';
         });
 
         this.closeFormButton.addEventListener('click', () => {
             this.addFormContainer.classList.add('hidden');
             this.productContainer.classList.remove('blur');
+            this.productContainer.style.pointerEvents = 'auto';
         });
 
         this.addProductForm.removeEventListener('submit', this.onFormSubmit);
@@ -224,6 +226,7 @@ export class ProductController {
         e.preventDefault();
         if (this.editProductId !== null) {
             await this.updateExistingProduct();
+            this.productContainer.style.pointerEvents = 'auto';
         } else {
             await this.addNewProduct();
         }
@@ -268,6 +271,7 @@ export class ProductController {
                 this.loadProductDetailsIntoForm(products[index]);
                 this.addFormContainer.classList.remove('hidden');
                 this.productContainer.classList.add('blur');
+                this.productContainer.style.pointerEvents = 'none';
             });
         });
     }
