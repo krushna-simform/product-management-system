@@ -127,80 +127,82 @@ export class ProductController {
             return;
         }
 
-        (
-            this.addFormContainer.querySelector('#title') as HTMLInputElement
-        ).addEventListener('input', (e) => {
-            const title = (e.target as HTMLInputElement).value;
-            const errorMessage = this.formValidation.validateTitle(title);
-            if (errorMessage) {
-                this.formValidation.showError('title', errorMessage);
-            } else {
-                this.formValidation.clearError('title');
-            }
-        });
+        const handleInput = (
+            inputId: string,
+            validator: (value: string) => string,
+            errorType: string
+        ) => {
+            const inputElement = this.addProductForm.querySelector(
+                `#${inputId}`
+            ) as HTMLInputElement;
+            inputElement.addEventListener('input', (e) => {
+                const value =
+                    e.target instanceof HTMLInputElement ? e.target.value : '';
+                const errorMessage = validator(value);
+                if (errorMessage) {
+                    this.formValidation.showError(errorType, errorMessage);
+                } else {
+                    this.formValidation.clearError(errorType);
+                }
+            });
+        };
 
-        (
-            this.addProductForm.querySelector(
-                '#description'
-            ) as HTMLInputElement
-        ).addEventListener('input', (e) => {
-            const description = (e.target as HTMLInputElement).value;
-            const errorMessage =
-                this.formValidation.validateDescription(description);
-            if (errorMessage) {
-                this.formValidation.showError('description', errorMessage);
-            } else {
-                this.formValidation.clearError('description');
-            }
-        });
+        const handleNumberInput = (
+            inputId: string,
+            validator: (value: number) => string,
+            errorType: string
+        ) => {
+            const inputElement = this.addProductForm.querySelector(
+                `#${inputId}`
+            ) as HTMLInputElement;
+            inputElement.addEventListener('input', (e) => {
+                const value = Number(
+                    e.target instanceof HTMLInputElement ? e.target.value : 0
+                );
+                const errorMessage = validator(value);
+                if (errorMessage) {
+                    this.formValidation.showError(errorType, errorMessage);
+                } else {
+                    this.formValidation.clearError(errorType);
+                }
+            });
+        };
 
-        (
-            this.addProductForm.querySelector('#category') as HTMLInputElement
-        ).addEventListener('input', (e) => {
-            const category = (e.target as HTMLInputElement).value;
-            const errorMessage = this.formValidation.validateCategory(category);
-            if (errorMessage) {
-                this.formValidation.showError('category', errorMessage);
-            } else {
-                this.formValidation.clearError('category');
-            }
-        });
+        handleInput(
+            'title',
+            this.formValidation.validateTitle.bind(this.formValidation),
+            'title'
+        );
 
-        (
-            this.addProductForm.querySelector('#price') as HTMLImageElement
-        ).addEventListener('input', (e) => {
-            const price = Number((e.target as HTMLInputElement).value);
-            const errorMessage = this.formValidation.validatePrice(price);
-            if (errorMessage) {
-                this.formValidation.showError('price', errorMessage);
-            } else {
-                this.formValidation.clearError('price');
-            }
-        });
+        handleInput(
+            'description',
+            this.formValidation.validateDescription.bind(this.formValidation),
+            'description'
+        );
 
-        (
-            this.addProductForm.querySelector('#stock') as HTMLInputElement
-        ).addEventListener('input', (e) => {
-            const stock = Number((e.target as HTMLInputElement).value);
-            const errorMessage = this.formValidation.validateStock(stock);
-            if (errorMessage) {
-                this.formValidation.showError('stock', errorMessage);
-            } else {
-                this.formValidation.clearError('stock');
-            }
-        });
+        handleInput(
+            'category',
+            this.formValidation.validateCategory.bind(this.formValidation),
+            'category'
+        );
 
-        (
-            this.addProductForm.querySelector('#imageUrl') as HTMLInputElement
-        ).addEventListener('input', (e) => {
-            const imageUrl = (e.target as HTMLInputElement).value;
-            const errorMessage = this.formValidation.validateImageUrl(imageUrl);
-            if (errorMessage) {
-                this.formValidation.showError('imageUrl', errorMessage);
-            } else {
-                this.formValidation.clearError('imageUrl');
-            }
-        });
+        handleInput(
+            'imageUrl',
+            this.formValidation.validateImageUrl.bind(this.formValidation),
+            'imageUrl'
+        );
+
+        handleNumberInput(
+            'price',
+            this.formValidation.validatePrice.bind(this.formValidation),
+            'price'
+        );
+
+        handleNumberInput(
+            'stock',
+            this.formValidation.validateStock.bind(this.formValidation),
+            'stock'
+        );
 
         this.addProductButton.addEventListener('click', () => {
             this.editProductId = null;
