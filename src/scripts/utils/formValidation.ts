@@ -1,28 +1,46 @@
 export class FormValidation {
-    validateTitle(title: string): string {
-        if (!title) return 'Please provide a title.';
-        if (!/^[A-Za-z\s]+[A-Za-z0-9\s]*$/.test(title)) {
-            return 'Title contains invalid characters. Only letters, numbers, and spaces allowed, starting with a letter.';
+    private readonly regexForValidation: RegExp = /^[A-Za-z\s]+[A-Za-z0-9\s]*$/;
+
+    private validateWithRegex(
+        value: string,
+        regex: RegExp,
+        maxLength: number,
+        fieldName: string
+    ): string {
+        if (!value) return `Please provide a ${fieldName}.`;
+        if (!regex.test(value)) {
+            return `${fieldName} contains invalid characters. Only letters, numbers, and spaces allowed, starting with a letter.`;
         }
-        if (title.length > 30) return 'Title must not exceed 30 characters.';
+        if (value.length > maxLength)
+            return `${fieldName} must not exceed ${maxLength} characters.`;
         return '';
+    }
+
+    validateTitle(title: string): string {
+        return this.validateWithRegex(
+            title,
+            this.regexForValidation,
+            30,
+            'title'
+        );
     }
 
     validateDescription(description: string): string {
-        if (!description) return 'Please provide a description.';
-        if (description.length > 200)
-            return 'Description must not exceed 200 characters.';
-        return '';
+        return this.validateWithRegex(
+            description,
+            this.regexForValidation,
+            200,
+            'description'
+        );
     }
 
     validateCategory(category: string): string {
-        if (!category) return 'Please provide a category.';
-        if (!/^[A-Za-z\s]+[A-Za-z0-9\s]*$/.test(category)) {
-            return 'Category contains invalid characters. Only letters, numbers, and spaces allowed, starting with a letter.';
-        }
-        if (category.length > 30)
-            return 'Category must not exceed 30 characters.';
-        return '';
+        return this.validateWithRegex(
+            category,
+            this.regexForValidation,
+            30,
+            'category'
+        );
     }
 
     validatePrice(price: number): string {
