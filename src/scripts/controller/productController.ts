@@ -359,6 +359,7 @@ export class ProductController {
 
     async addNewProduct() {
         await this.addProduct(false);
+        this.productContainer.style.pointerEvents = 'auto';
     }
 
     async updateExistingProduct() {
