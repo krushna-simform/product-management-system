@@ -32,7 +32,7 @@ export class ProductView {
     loading() {
         if (!this.productContainer) return;
 
-        this.productContainer.innerHTML = `<p>Loading...</p>`;
+        this.productContainer.innerHTML = `<p id="loader"></p>`;
     }
 
     handleViewDetailsButton(product: Array<Product>) {

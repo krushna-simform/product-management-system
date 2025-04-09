@@ -24,6 +24,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--bg-color);
     color: var(--font-color);
+    height: 100vh;
 }
 
 /* header */
@@ -187,6 +188,11 @@ header {
     display: none;
 }
 
+.blur {
+    filter: blur(0.5rem);
+    transition-duration: 300ms;
+}
+
 #product-form-container {
     position: fixed;
     top: 50%;
@@ -280,6 +286,8 @@ header {
     padding: 1.5rem;
     border-radius: 8px;
     background: white;
+    min-height: 80vh;
+    position: relative;
 }
 
 .detail-header {
@@ -390,6 +398,43 @@ header {
     margin-top: 1rem;
     font-size: 1.2rem;
     color: var(--product-detail-discount-badge-color);
+}
+
+#loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid lightblue;
+    border-right-color: orange;
+    animation: l2 1s infinite linear;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+}
+
+#back-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #bebebe;
+    color: var(--font-color);
+}
+
+.error-message {
+    color: #ff0000;
+}
+
+@keyframes l2 {
+    to {
+        transform: rotate(1turn);
+    }
 }
 
 @media (max-width: 910px) {
